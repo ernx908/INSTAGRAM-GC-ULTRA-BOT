@@ -1,0 +1,17 @@
+services:
+  - type: worker
+    name: instagram-gc-bot
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: IG_USERNAME
+        sync: false
+      - key: IG_PASSWORD
+        sync: false
+      - key: ALLOWED_GC_IDS
+        sync: false
+      - key: ADMIN_USERNAMES
+        sync: false
