@@ -1,2 +1,4 @@
-instagrapi==2.1.2
-schedule==1.2.1
+instagrapi==2.5.14
+schedule==1.2.2
+pydantic==2.10.6
+httpx==0.27.2
