@@ -103,11 +103,21 @@ def login():
                 os.remove(SESSION_FILE)
 
     try:
+        # Use login_by_sessionid if SESSION_ID env var is set
+        session_id = os.environ.get("IG_SESSION_ID", "")
+        if session_id:
+            cl.login_by_sessionid(session_id)
+            cl.dump_settings(SESSION_FILE)
+            log.info("✅ Logged in via session ID")
+            return
+
         cl.login(IG_USERNAME, IG_PASSWORD)
         cl.dump_settings(SESSION_FILE)
         log.info("✅ Fresh login successful")
     except Exception as e:
         log.error(f"❌ Login failed: {e}")
+        import traceback
+        traceback.print_exc()
         raise
 
 def safe_send(thread_id: str, text: str):
