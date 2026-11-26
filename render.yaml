@@ -8,10 +8,10 @@ services:
     startCommand: python bot.py
     envVars:
       - key: IG_USERNAME
-        sync: false
+        value: iy7qt
       - key: IG_PASSWORD
-        sync: false
+        value: GCBOTBYEREN
       - key: ALLOWED_GC_IDS
-        sync: false
+        value: 4991325857820229
       - key: ADMIN_USERNAMES
-        sync: false
+        value: eren_ye4gerrr
