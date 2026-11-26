@@ -74,6 +74,21 @@ data = load_data()
 cl = Client()
 cl.delay_range = [2, 5]   # random delay between requests (anti-ban)
 
+# Set device to avoid NoneType parse errors on fresh login
+cl.set_device({
+    "app_version": "269.0.0.18.75",
+    "android_version": 26,
+    "android_release": "8.0.0",
+    "dpi": "480dpi",
+    "resolution": "1080x1920",
+    "manufacturer": "OnePlus",
+    "device": "ONEPLUS A3003",
+    "model": "OnePlus3",
+    "cpu": "qcom",
+    "version_code": "314665256",
+})
+cl.set_user_agent()
+
 def login():
     """Login with session reuse to avoid frequent logins."""
     if os.path.exists(SESSION_FILE):
@@ -84,6 +99,8 @@ def login():
             return
         except Exception as e:
             log.warning(f"Session load failed: {e}, fresh login...")
+            if os.path.exists(SESSION_FILE):
+                os.remove(SESSION_FILE)
 
     try:
         cl.login(IG_USERNAME, IG_PASSWORD)
