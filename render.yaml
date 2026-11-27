@@ -15,3 +15,5 @@ services:
         value: 4991325857820229
       - key: ADMIN_USERNAMES
         value: eren_ye4gerrr
+      - key: IG_SESSION_ID
+        value: 64413868153%3A1eynSx3eVpVUom%3A6%3AAYnjV9brMw85B09DoFeHmViUSuuU4a6avgyFBb8MPw
